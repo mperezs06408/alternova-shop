@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { db } from '@/api/db';
 
 function ProductStore() {
-    const [products, setProducts] = useState(db);
+    const {products} = useSelector( state => state.productList);
+    // const [products, setProducts] = useState(db);
 
     const navigation = useNavigate();
 
