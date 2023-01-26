@@ -19,8 +19,17 @@ const axiosInstance = axios.create({
 
 export const getProductsList = () => {
     return async(dispatch, state) => {
-        const request = await axiosInstance.get(SOURCE_ENTITY);
-        const data = request.data;
+        let request;
+        let data;
+        try {
+            request = await axiosInstance.get(SOURCE_ENTITY);
+            data = request.data;
+        } catch(e){
+            request = await fetch('./db.json');
+            const response = await request.json();
+            
+            data = response.products
+        }
 
         let categories = []
 
