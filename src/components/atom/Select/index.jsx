@@ -1,3 +1,5 @@
+import './Select.scss';
+
 function Select({
     defaultLabel,
     name,

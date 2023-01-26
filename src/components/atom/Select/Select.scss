@@ -1,0 +1,17 @@
+@import "@styles/variables.scss";
+
+.select {
+    background-color: $pink;
+    color: $barn-red;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+    padding: 10px 5px;
+    border: 2px solid $pink;
+    border-radius: 5px;
+    transition: all .3s ease-in;
+
+    &:focus{
+        border: 2px solid $barn-red;
+    }
+}

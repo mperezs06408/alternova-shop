@@ -8,10 +8,13 @@ import Input from '@atoms/Input';
 import Select from '@atoms/Select';
 import Filters from '@molecules/Filters';
 import ProductList from '@molecules/ProductList';
-import ProductCard from '@molecules/ProductCard'
+import ProductCard from '@molecules/ProductCard';
+import { ReactComponent as EmptyWallet } from '@assets/empty-wallet.svg';
+import "./ProductStore.scss";
 
 function ProductStore() {
     const {products, categories} = useSelector( state => state.productList);
+    const {cart} = useSelector(state => state.cart);
     const dispatch = useDispatch();
 
     const [filteredItems, setFilteredItems] = useState({
@@ -26,7 +29,7 @@ function ProductStore() {
     } = filteredItems
     const navigation = useNavigate();
 
-    useEffect(() => {
+    useEffect(() => {        
         setFilteredItems({
             ...filteredItems,
             productsFiltered: products
@@ -71,7 +74,14 @@ function ProductStore() {
             searchByCategory: value
         })
     }
+    const getQuantitySelected = (name) => {
+        const item = cart.find( it => it.name === name);
 
+        if (item?.quantity) {
+            return item.quantity
+        }
+        return 0
+    }
     const handleClick = (name, stock, unitPrice) => {
         console.log(name, stock);
 
@@ -83,10 +93,6 @@ function ProductStore() {
     return(
         <div className='store'>
             <h1 className='store__title'>Shopping store</h1>
-            <Button 
-                label="Go to cart"
-                handleClick={onNavigateToCart}
-            />
             <Filters>
                 <Input 
                     name="searchByName"
@@ -108,11 +114,11 @@ function ProductStore() {
                         <ProductCard
                             key={it.name}
                             name={it.name}
-                            stock={it.stock}
+                            quantitySelected={() => getQuantitySelected(it.name) }
                             buttons={
                                 () => (
                                     <Button
-                                        label="Add to cart"
+                                        label={it.stock === 0? "Out of stock":"Add to cart"}  
                                         handleClick={() => handleClick(it.name, it.stock, it.unit_price)}
                                         disabled={it.stock === 0}  
                                     />
@@ -122,6 +128,14 @@ function ProductStore() {
                     ))
                 }
             </ProductList>
+            {
+                productsFiltered.length === 0
+                &&
+                <div className='store__empty'>
+                    <EmptyWallet />
+                    <p>There's no products available right now :(.</p>
+                </div>
+            }
         </div>
     )
 }

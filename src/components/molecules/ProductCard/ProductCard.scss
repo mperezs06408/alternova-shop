@@ -1,0 +1,36 @@
+@import "@styles/variables";
+
+.product{
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+    "img img"
+    "title title"
+    "quantity button"
+    ;
+    grid-template-rows: 250px auto auto;
+    color: $dark-grey;
+    text-align: center;
+    box-shadow: 1px 0 5px .8px $barn-red;
+    border-radius: 20px;
+    overflow: hidden;
+
+    img{
+        background-color: $barn-red;
+        grid-area: img;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    h2{
+        grid-area: title;
+        padding: 15px 0 10px;
+    }
+    p{
+        grid-area: quantity;
+        font-size: 1.5rem;
+        color: rgba($dark-grey, .7);
+        font-weight: bold;
+        padding: 8px 5px 2px;
+    }
+}

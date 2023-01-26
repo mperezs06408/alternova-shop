@@ -1,3 +1,5 @@
+import './ProductList.scss'
+
 function ProductList({children}){
     return (
         <ul

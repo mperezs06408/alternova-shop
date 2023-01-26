@@ -1,0 +1,32 @@
+@import "@styles/variables.scss";
+
+.menu{
+    background-color: $unbleached-silk;
+    width: 100%;
+    height: 40px;
+
+    &__nav{
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: fit-content;
+        padding:10px 5px 5px;
+        margin: auto auto;
+    }
+
+    &__item{
+        color: $barn-red;
+        // font-weight: bold;
+        padding: 5px;
+        border-bottom: 2px solid $barn-red;
+        margin: 0 5px;
+
+        &:hover{
+            color: rgba($barn-red, .5);
+            border-bottom: 2px solid rgba($barn-red, .5);
+        }
+    }
+
+}

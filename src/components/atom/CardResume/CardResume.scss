@@ -1,0 +1,12 @@
+@import "@styles/variables.scss";
+
+.cardResume{
+    text-align: left;
+    padding: 10px 0;
+    border-bottom: 1px dashed $pink;
+
+    &__label{
+        color: $dark-grey;
+        margin: 5px 25px;
+    }
+}

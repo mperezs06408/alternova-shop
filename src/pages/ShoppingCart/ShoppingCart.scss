@@ -1,0 +1,25 @@
+@import "@styles/variables.scss", "@styles/mixins.scss";
+
+.cart{
+    width: 100%;
+    height: 100%;
+
+    &__title{
+        font-size: 2rem;
+        color: $barn-red;
+        text-align: center;
+        padding: 2rem 0 1rem;
+    }
+
+    &__btn{
+        width: 100%;
+        padding: 0 25px;
+
+        @include toResolution($tablet) {
+            width: $tablet;
+            margin: auto;
+        }
+    }
+
+
+}

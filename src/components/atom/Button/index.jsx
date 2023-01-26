@@ -1,3 +1,5 @@
+import "./Button.scss"
+
 function Button({
     label,
     handleClick,

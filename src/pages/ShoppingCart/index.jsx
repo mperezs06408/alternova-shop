@@ -2,8 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { createOrder } from '@/store/thunks/productsThunk';
 import Button from "@atoms/Button";
-import OrderTable from "@molecules/OrderTable";
-import TableRow from "@atoms/TableRow";
+import OrderCard from "@molecules/OrderCard";
+import CardResume from "@atoms/CardResume";
+import './ShoppingCart.scss'
 
 function ShoppingCart() {
     const { 
@@ -23,12 +24,14 @@ function ShoppingCart() {
     return(
         <div className='cart'>
             <h1 className='cart__title'>Cart</h1>
-            <OrderTable
+            <OrderCard
+                totalProducts={cart.length}
                 totalOrderPrice={totalOrderPrice}
             >
                 {
                     cart.map(it => (
-                        <TableRow
+                        <CardResume
+                            key={it.name}
                             name={it.name}
                             quantity={it.quantity}
                             unitPrice={it.unitPrice}
@@ -36,12 +39,14 @@ function ShoppingCart() {
                         />
                     ))
                 }
-            </OrderTable>
-            <Button 
-                label="Create order"
-                handleClick={handleSubmit}
-                disabled={cart.length === 0}
-            />
+            </OrderCard>
+            <div className='cart__btn'>
+                <Button 
+                    label="Create order"
+                    handleClick={handleSubmit}
+                    disabled={cart.length === 0}
+                />
+            </div>
         </div>
     )
 }

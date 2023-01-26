@@ -1,0 +1,20 @@
+@import "@styles/variables.scss", "@styles/mixins.scss";
+
+.products {
+    padding: 25px;
+    list-style: none;
+    display: grid;
+    gap: 20px;
+    // li.product:not(:last-child) { 
+    //     margin-bottom: 20px;  
+    // }
+
+    @include toResolution($tablet) {
+        grid-template-columns: 1fr 1fr;  
+    }
+
+    @include toResolution($desktop) {
+        width: $desktop;
+        margin: auto;
+    }
+}

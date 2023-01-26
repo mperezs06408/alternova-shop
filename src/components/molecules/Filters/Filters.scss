@@ -1,0 +1,35 @@
+@import "@styles/variables.scss", "@styles/mixins.scss";
+
+.filters{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 0 25px;
+
+    h2{
+        grid-area: label;
+        color: $mountbatten-pink;
+        font-size: 1rem;
+        font-weight: 100;
+    }
+    input {
+        grid-area: input;
+    }
+    select {
+        grid-area: select;
+    }
+
+    @include toResolution($tablet){
+        display: grid;
+        grid-template-areas: 
+        "label label"
+        "input select";
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+    }
+
+    @include toResolution($desktop){
+        width: $desktop;
+        margin: auto;
+    }
+}
