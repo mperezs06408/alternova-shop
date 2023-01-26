@@ -3,7 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setProduct } from '@slices/productListSlice.js';
 import { addToCart } from '../../store/slices/cartSlice';
-import DummyImg from '@assets/dummy_img.jpg';
+import Button from '@atoms/Button';
+import Input from '@atoms/Input';
+import Select from '@atoms/Select';
+import Filters from '@molecules/Filters';
+import ProductList from '@molecules/ProductList';
+import ProductCard from '@molecules/ProductCard'
 
 function ProductStore() {
     const {products, categories} = useSelector( state => state.productList);
@@ -76,35 +81,47 @@ function ProductStore() {
 
 
     return(
-        <div>
-            <h1>Products list</h1>
-            <button onClick={onNavigateToCart}>Go to cart</button>
-            <div>
-                <input placeholder='Search by name' name='searchByName' value={searchByName} onChange={(e) => onSearchItemByName(e.target.value)} />
-                <select name='searchByCategory' onChange={(e) => onSearchItemByCategory(e.target.value)} value={searchByCategory}>
-                    <option value=''>Seleccione un valor</option>
-                    {
-                        categories.map((it) => (
-                            <option key={it} value={it}>{it}</option>
-                        ))
-                    }
-                </select>
-            </div>
-            <ul>
+        <div className='store'>
+            <h1 className='store__title'>Shopping store</h1>
+            <Button 
+                label="Go to cart"
+                handleClick={onNavigateToCart}
+            />
+            <Filters>
+                <Input 
+                    name="searchByName"
+                    placeholder="Search by name"
+                    handleChange={onSearchItemByName}
+                    value={searchByName}
+                />
+                <Select 
+                    defaultLabel="Select a category"
+                    name="searchByCategory"
+                    handleChange={onSearchItemByCategory}
+                    value={searchByCategory}
+                    options={categories}
+                />                
+            </Filters>
+            <ProductList>
                 {
                     productsFiltered.map( it => (
-                        <li key={it.name}>
-                            {/* <img src={DummyImg} alt="Cart img for test" /> */}
-                            <h2>{it.name}</h2>
-                            <h3>Stock: {it.stock}</h3>
-                            <button
-                                onClick={() => handleClick(it.name, it.stock, it.unit_price)}
-                                disabled={it.stock === 0}
-                            >Add to cart</button>
-                        </li>
+                        <ProductCard
+                            key={it.name}
+                            name={it.name}
+                            stock={it.stock}
+                            buttons={
+                                () => (
+                                    <Button
+                                        label="Add to cart"
+                                        handleClick={() => handleClick(it.name, it.stock, it.unit_price)}
+                                        disabled={it.stock === 0}  
+                                    />
+                                )
+                            }
+                        />
                     ))
                 }
-            </ul>
+            </ProductList>
         </div>
     )
 }
