@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getProductsList } from './store/thunks/productsThunk';
 import Router from './router/Router';
@@ -13,9 +13,9 @@ function App() {
   },[])
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Router />
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

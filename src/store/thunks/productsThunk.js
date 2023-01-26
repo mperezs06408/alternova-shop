@@ -1,7 +1,7 @@
 import { setProducts } from '../slices/productListSlice';
 import { clearCart } from '../slices/cartSlice';
 import axios from 'axios';
-import fs from 'vite-plugin-fs/browser';
+// import fs from 'vite-plugin-fs/browser';
 import { v4 as uniqueId } from 'uuid';
 import jsonStringifyDate from 'json-stringify-date';
 
@@ -61,8 +61,22 @@ export const createOrder = () => {
             total_order_price: cart.totalOrderPrice
         }
 
-        const file = await fs.writeFile(`src/api/__${id}.json`, JSON.stringify(obj))
-        const saveOrder = await axiosInstance.post(DESTINY_ENTITY, obj)
+        /**For gh-pages */
+        const file = await new Blob([JSON.stringify(obj)], {type: 'application/json'});
+
+        const element = document.createElement('a');
+        element.href = URL.createObjectURL(file);
+
+        element.download = `factura__${id}.json`;
+
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+        /************* */
+        /** to run in dev */
+        // const file = await fs.writeFile(`src/api/__${id}.json`, JSON.stringify(obj))
+        // const saveOrder = await axiosInstance.post(DESTINY_ENTITY, obj)
+        /*************** */
 
         dispatch( clearCart() )
     }

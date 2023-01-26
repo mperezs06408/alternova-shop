@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import fs from 'vite-plugin-fs'
+// import fs from 'vite-plugin-fs'
 import svgr from 'vite-plugin-svgr'
 import path from 'path'
 
@@ -18,5 +18,7 @@ export default defineConfig({
       "@styles": path.resolve(__dirname, '/src/styles')
     }
   },
-  plugins: [react(), fs(), svgr()],
+  // plugins: [react(), fs(), svgr()],
+  plugins: [react(), svgr()],
+  base: '/alternova-shop/'
 })

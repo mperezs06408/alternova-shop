@@ -1,4 +1,4 @@
-@import "@styles/variables";
+@import "@styles/variables", "@styles/mixins";
 
 .product{
     position: relative;
@@ -44,14 +44,18 @@
         font-weight: bold;
         line-height: 1.2;
         width: 125px;
-        height: 44px;
+        height: 50px;
         padding: 12px;
         border-radius: 0 20px 0 0;
+
+        @include toResolution($tablet) {
+            height: 44px;
+        }
     }
 
     &__price{
         position: absolute !important;
-        top: 44px;
+        top: 50px;
         right: 0;
         background-color: rgba($barn-red, .8);
         color: #fff;
@@ -59,8 +63,13 @@
         font-weight: bold;
         line-height: 1.2;
         width: 125px;
-        height: 44px;
+        height: 50px;
         padding: 12px;
         border-radius: 0 0 0 20px;
+
+        @include toResolution($tablet) {
+            top: 44px;
+            height: 44px;
+        }
     }
 }
