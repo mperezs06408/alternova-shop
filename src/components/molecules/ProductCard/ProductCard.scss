@@ -33,4 +33,34 @@
         font-weight: bold;
         padding: 8px 5px 2px;
     }
+
+    &__stock{
+        position: absolute !important;
+        top: 0;
+        right: 0;
+        background-color: rgba($barn-red, .8);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.2;
+        width: 125px;
+        height: 44px;
+        padding: 12px;
+        border-radius: 0 20px 0 0;
+    }
+
+    &__price{
+        position: absolute !important;
+        top: 44px;
+        right: 0;
+        background-color: rgba($barn-red, .8);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.2;
+        width: 125px;
+        height: 44px;
+        padding: 12px;
+        border-radius: 0 0 0 20px;
+    }
 }

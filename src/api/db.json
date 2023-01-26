@@ -55,26 +55,5 @@
       "type": "building"
     }
   ],
-  "orders": [
-    {
-      "id": "7c320e9a-da32-4453-bcec-d29a0d8e5e0f",
-      "date": "2023-01-25T21:16:42.802-05:00",
-      "total_order_products": 2,
-      "products": [
-        {
-          "name": "iPhone 14 Pro Ma",
-          "quantity": 1,
-          "unitPrice": 5000,
-          "totalPrice": 5000
-        },
-        {
-          "name": "Timon Racing Carrera",
-          "quantity": 1,
-          "unitPrice": 8000,
-          "totalPrice": 8000
-        }
-      ],
-      "total_order_price": 13000
-    }
-  ]
+  "orders": []
 }

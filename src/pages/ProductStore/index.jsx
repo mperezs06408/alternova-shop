@@ -114,6 +114,8 @@ function ProductStore() {
                         <ProductCard
                             key={it.name}
                             name={it.name}
+                            stock={it.stock}
+                            price={it.unit_price}
                             quantitySelected={() => getQuantitySelected(it.name) }
                             buttons={
                                 () => (
