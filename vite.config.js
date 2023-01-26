@@ -9,7 +9,7 @@ export default defineConfig({
     alias:{
       "@": path.resolve(__dirname, '/src'),
       "@slices": path.resolve(__dirname, '/src/store/slices'),
-      "@api": path.resolve(__dirname, '/src/api')
+      "@assets": path.resolve(__dirname, '/src/assets')
     }
   },
   plugins: [react(),fs()],

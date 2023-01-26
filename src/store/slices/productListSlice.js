@@ -1,22 +1,30 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    products: []
+    products: [],
+    categories: []
 }
 
 const reducers = {
     setProducts: (state, action) => {
-        console.log(action.payload);
+        const {
+            products,
+            categories
+        } = action.payload
 
-        state.products = action.payload
+        state.products = products
+        state.categories = categories
     },
     setProduct: (state, action) => {
+        const {
+            products
+        } = state
         const {
             name,
             value
         } = action.payload;
 
-        const product = state.products.find( it => it.name == name);
+        const product = products.find( it => it.name == name);
 
         if (product) {
             product.stock = value;

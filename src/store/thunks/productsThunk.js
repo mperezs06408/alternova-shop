@@ -19,9 +19,18 @@ const axiosInstance = axios.create({
 
 export const getProductsList = () => {
     return async(dispatch, state) => {
-        const response = await axiosInstance.get(SOURCE_ENTITY) ;
+        const request = await axiosInstance.get(SOURCE_ENTITY);
+        const data = request.data;
 
-        dispatch( setProducts(response.data) );
+        let categories = []
+
+        data.map( it => {
+            if (!categories.find(cat => cat === it.type)){
+                categories.push(it.type)
+            } 
+        })
+
+        dispatch( setProducts({products: data, categories: categories}) );
     }
 }
 
