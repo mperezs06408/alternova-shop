@@ -1,5 +1,6 @@
 import { setProducts } from '../slices/productListSlice';
 import { clearCart } from '../slices/cartSlice';
+import axios from 'axios';
 import fs from 'vite-plugin-fs/browser';
 import { v4 as uniqueId } from 'uuid';
 import jsonStringifyDate from 'json-stringify-date';
@@ -8,12 +9,19 @@ const SERVER = "http://localhost:3000"
 const SOURCE_ENTITY = "/products"
 const DESTINY_ENTITY = "/orders"
 
+
+const axiosInstance = axios.create({
+    baseURL: SERVER,
+    headers:{
+        'Content-Type': 'application/json'
+    }
+})
+
 export const getProductsList = () => {
     return async(dispatch, state) => {
-        const request = await fetch(`${SERVER}${SOURCE_ENTITY}`);
-        const response = await request.json();
+        const response = await axiosInstance.get(SOURCE_ENTITY) ;
 
-        dispatch( setProducts(response) );
+        dispatch( setProducts(response.data) );
     }
 }
 
@@ -36,14 +44,7 @@ export const createOrder = () => {
         }
 
         const file = await fs.writeFile(`src/api/__${id}.json`, JSON.stringify(obj))
-
-        const saveOrder = await fetch(`${SERVER}${DESTINY_ENTITY}`, {
-            method: 'POST',
-            body: JSON.stringify(obj),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        const saveOrder = await axiosInstance.post(DESTINY_ENTITY, obj)
 
         dispatch( clearCart() )
     }
