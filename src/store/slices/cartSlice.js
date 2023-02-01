@@ -33,6 +33,25 @@ const reducers = {
         state.totalOrderPrice += unitPrice;
         console.log(name, unitPrice);
     },
+    removeFromCart: (state, action) => {
+        const {
+            name
+        } = action.payload
+        // let uni
+
+        const product = state.cart.find(it => it.name === name);
+
+        // console.log(product)
+        if (product && product?.quantity > 1) {
+            product.quantity -= 1;
+            product.totalPrice -= product.unitPrice;
+        } else {
+            const indexProduct = state.cart.indexOf(product);
+            state.cart.splice(indexProduct, 1);
+        }
+        state.totalOrderProducts -= 1;
+        state.totalOrderPrice -+ product.unitPrice
+    },
     clearCart: (state) => {
         state.cart = [];
         state.totalOrderProducts = 0;
@@ -48,5 +67,6 @@ export const cartSlice = createSlice({
 
 export const {
     addToCart,
+    removeFromCart,
     clearCart
 } = cartSlice.actions

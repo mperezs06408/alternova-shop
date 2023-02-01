@@ -1,16 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '@slices/cartSlice';
+import { setProduct } from '@slices/productListSlice.js';
 import { createOrder } from '@/store/thunks/productsThunk';
 import Button from "@atoms/Button";
-import OrderCard from "@molecules/OrderCard";
+import RemoveButton from '@atoms/RemoveButton';
 import CardResume from "@atoms/CardResume";
+import OrderButtons from '@molecules/OrderButtons';
+import OrderCard from "@molecules/OrderCard";
 import './ShoppingCart.scss'
 
 function ShoppingCart() {
     const { 
         cart,     
-        totalOrderPrice
+        totalOrderPrice,
+        totalOrderProducts
     } = useSelector(state => state.cart);
+    const {
+        products
+    } = useSelector(state => state.productList);
     const dispatch = useDispatch();
 
     const navigation = useNavigate();
@@ -20,12 +28,18 @@ function ShoppingCart() {
 
         dispatch( createOrder() )
     }
+    const onRemoveElement = (name) => {
+        const { stock } = products.find(it => it.name === name);
+
+        dispatch( removeFromCart({name: name}) )
+        dispatch( setProduct({name: name, value: stock + 1}) )
+    }
 
     return(
         <div className='cart'>
             <h1 className='cart__title'>Cart</h1>
             <OrderCard
-                totalProducts={cart.length}
+                totalProducts={totalOrderProducts}
                 totalOrderPrice={totalOrderPrice}
             >
                 {
@@ -36,7 +50,13 @@ function ShoppingCart() {
                             quantity={it.quantity}
                             unitPrice={it.unitPrice}
                             totalPrice={it.totalPrice}
-                        />
+                        >
+                            <OrderButtons>
+                                <RemoveButton 
+                                    handleClick={() => onRemoveElement(it.name)}
+                                />
+                            </OrderButtons>
+                        </CardResume>
                     ))
                 }
             </OrderCard>
@@ -44,7 +64,7 @@ function ShoppingCart() {
                 <Button 
                     label="Create order"
                     handleClick={handleSubmit}
-                    disabled={cart.length === 0}
+                    disabled={totalOrderProducts === 0}
                 />
             </div>
         </div>

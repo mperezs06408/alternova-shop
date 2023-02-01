@@ -1,0 +1,20 @@
+@import '@styles/variables.scss';
+
+.removeBtn{
+    background-color: $pink;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 5px;
+
+    path{
+        stroke: $barn-red;
+    }
+
+    &:focus{
+        background-color: $barn-red;
+        path{
+            stroke: $pink;
+        }
+    }
+}
