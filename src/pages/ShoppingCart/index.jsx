@@ -8,7 +8,8 @@ import './ShoppingCart.scss'
 
 function ShoppingCart() {
     const { 
-        cart,     
+        cart,    
+        totalOrderProducts, 
         totalOrderPrice
     } = useSelector(state => state.cart);
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function ShoppingCart() {
         <div className='cart'>
             <h1 className='cart__title'>Cart</h1>
             <OrderCard
-                totalProducts={cart.length}
+                totalProducts={totalOrderProducts}
                 totalOrderPrice={totalOrderPrice}
             >
                 {
@@ -44,7 +45,7 @@ function ShoppingCart() {
                 <Button 
                     label="Create order"
                     handleClick={handleSubmit}
-                    disabled={cart.length === 0}
+                    disabled={totalOrderProducts === 0}
                 />
             </div>
         </div>
