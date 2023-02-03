@@ -15,7 +15,7 @@ const reducers = {
         state.products = products
         state.categories = categories
     },
-    setProduct: (state, action) => {
+    updateProductStock: (state, action) => {
         const {
             products
         } = state
@@ -40,5 +40,5 @@ export const productListSlice = createSlice({
 
 export const {
     setProducts,
-    setProduct
+    updateProductStock
 } = productListSlice.actions

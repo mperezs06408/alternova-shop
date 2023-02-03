@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setProduct } from '@slices/productListSlice.js';
+import { updateProductStock } from '@slices/productListSlice.js';
 import { addToCart } from '../../store/slices/cartSlice';
 import Button from '@atoms/Button';
 import Input from '@atoms/Input';
@@ -85,7 +85,7 @@ function ProductStore() {
     const handleClick = (name, stock, unitPrice) => {
         console.log(name, stock);
 
-        dispatch( setProduct({name:name, value: stock - 1}) )
+        dispatch( updateProductStock({name:name, value: stock - 1}) )
         dispatch( addToCart({name:name, unitPrice: unitPrice}) )
     }
 

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart } from '@slices/cartSlice';
-import { setProduct } from '@slices/productListSlice.js';
+import { updateProductStock } from '@slices/productListSlice.js';
 import { createOrder } from '@/store/thunks/productsThunk';
 import Button from "@atoms/Button";
 import RemoveButton from '@atoms/RemoveButton';
@@ -32,7 +32,7 @@ function ShoppingCart() {
         const { stock } = products.find(it => it.name === name);
 
         dispatch( removeFromCart({name: name}) )
-        dispatch( setProduct({name: name, value: stock + 1}) )
+        dispatch( updateProductStock({name: name, value: stock + 1}) )
     }
 
     return(
