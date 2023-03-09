@@ -8,6 +8,7 @@ function ProductCard({
     quantitySelected = () => '',
     buttons
 }){
+    
     return(
         <li
             className="product"

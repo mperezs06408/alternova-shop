@@ -79,5 +79,9 @@ export const createOrder = () => {
         /*************** */
 
         dispatch( clearCart() )
+
+        return {
+            idOrder: id
+        }
     }
 }

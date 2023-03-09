@@ -55,5 +55,90 @@
       "type": "building"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "13317a22-f2cc-497c-b433-e34f98992b46",
+      "date": "2023-03-08T12:02:03.427-05:00",
+      "total_order_products": 1,
+      "products": [
+        {
+          "name": "iPhone 14 Pro Ma",
+          "quantity": 1,
+          "unitPrice": 5000,
+          "totalPrice": 5000
+        }
+      ],
+      "total_order_price": 5000
+    },
+    {
+      "id": "d5b6a2c7-2060-4685-b904-13d90d09b78d",
+      "date": "2023-03-08T21:10:18.642-05:00",
+      "total_order_products": 1,
+      "products": [
+        {
+          "name": "iPhone 14 Pro Ma",
+          "quantity": 1,
+          "unitPrice": 5000,
+          "totalPrice": 5000
+        }
+      ],
+      "total_order_price": 5000
+    },
+    {
+      "id": "98c20b71-3bb1-4a75-94a3-307aab106301",
+      "date": "2023-03-08T21:13:01.835-05:00",
+      "total_order_products": 1,
+      "products": [
+        {
+          "name": "iPhone 14 Pro Ma",
+          "quantity": 1,
+          "unitPrice": 5000,
+          "totalPrice": 5000
+        }
+      ],
+      "total_order_price": 5000
+    },
+    {
+      "id": "d1a2ec9c-c722-4d3d-a6c4-5030fd979db7",
+      "date": "2023-03-08T21:13:35.661-05:00",
+      "total_order_products": 1,
+      "products": [
+        {
+          "name": "iPhone 14 Pro Ma",
+          "quantity": 1,
+          "unitPrice": 5000,
+          "totalPrice": 5000
+        }
+      ],
+      "total_order_price": 5000
+    },
+    {
+      "id": "95942884-c5d3-46c0-8289-58b9745705a3",
+      "date": "2023-03-08T21:15:20.732-05:00",
+      "total_order_products": 1,
+      "products": [
+        {
+          "name": "iPhone 14 Pro Ma",
+          "quantity": 1,
+          "unitPrice": 5000,
+          "totalPrice": 5000
+        }
+      ],
+      "total_order_price": 5000
+    },
+    {
+      "id": "49571c76-1eb3-46f0-90d5-1d028bafdba1",
+      "date": "2023-03-08T21:18:48.237-05:00",
+      "total_order_products": 3,
+      "products": [
+        {
+          "name": "iPhone 14 Pro Ma",
+          "quantity": 3,
+          "unitPrice": 5000,
+          "totalPrice": 15000
+        }
+      ],
+      "total_order_price": 15000
+    }
+  ]
 }
