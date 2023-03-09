@@ -6,7 +6,7 @@ import path from 'path'
 import process from 'process'
 
 // https://vitejs.dev/config/
-export default defineConfig( ({command, mode, }) => {
+export default defineConfig( ({command, mode }) => {
   console.log(command, mode);
   const env = loadEnv(mode, process.cwd());
 
@@ -25,7 +25,7 @@ export default defineConfig( ({command, mode, }) => {
         "@styles": path.resolve(__dirname, '/src/styles')
       }
     },
-    plugins: [react(), fs(), svgr()],
+    plugins: [react(), /*fs(),*/ svgr()],
   })
 }
 //   {
