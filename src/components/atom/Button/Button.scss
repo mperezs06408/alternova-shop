@@ -1,6 +1,7 @@
 @import "@styles/variables.scss", "@styles/mixins.scss";
 
 button{
+    cursor: pointer;
     grid-area: button;
     background-color: $barn-red;
     color: #fff;

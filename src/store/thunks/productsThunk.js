@@ -56,5 +56,9 @@ export const createOrder = () => {
         const saveOrder = await axiosInstance.post(DESTINY_ENTITY, obj)
 
         dispatch( clearCart() )
+
+        return {
+            idOrder: id
+        }
     }
 }

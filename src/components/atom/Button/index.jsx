@@ -4,13 +4,15 @@ function Button({
     label,
     handleClick,
     type = 'button',
-    disabled = false
+    disabled = false,
+    aditionalClasses = ''
 }){
     return(
         <button
             onClick={handleClick}
             type={type}
             disabled={disabled}
+            className={aditionalClasses}
         >{label}</button>
     )
 }
