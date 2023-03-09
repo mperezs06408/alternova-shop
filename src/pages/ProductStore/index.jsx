@@ -6,10 +6,11 @@ import { addToCart } from '../../store/slices/cartSlice';
 import Button from '@atoms/Button';
 import Input from '@atoms/Input';
 import Select from '@atoms/Select';
+import ErrorWidget from '@atoms/ErrorWidget';
 import Filters from '@molecules/Filters';
-import ProductList from '@molecules/ProductList';
-import ProductCard from '@molecules/ProductCard';
-import { ReactComponent as EmptyWallet } from '@assets/empty-wallet.svg';
+import ProductList from '@organisms/ProductList';
+import ProductCard from '@organisms/ProductCard';
+import ProductStoreLayout from '@template/ProductStoreLayout';
 import "./ProductStore.scss";
 
 function ProductStore() {
@@ -59,9 +60,6 @@ function ProductStore() {
         }
         return array
     }
-    const onNavigateToCart = () => {
-        navigation('/cart');
-    }
     const onSearchItemByName = (value) => {
         setFilteredItems({
             ...filteredItems,
@@ -88,11 +86,10 @@ function ProductStore() {
         dispatch( updateProductStock({name:name, value: stock - 1}) )
         dispatch( addToCart({name:name, unitPrice: unitPrice}) )
     }
-
+    console.log('re-render');
 
     return(
-        <div className='store'>
-            <h1 className='store__title'>Shopping store</h1>
+        <ProductStoreLayout>
             <Filters>
                 <Input 
                     name="searchByName"
@@ -133,12 +130,9 @@ function ProductStore() {
             {
                 productsFiltered.length === 0
                 &&
-                <div className='store__empty'>
-                    <EmptyWallet />
-                    <p>There's no products available right now :(.</p>
-                </div>
+                <ErrorWidget />
             }
-        </div>
+        </ProductStoreLayout>
     )
 }
 
