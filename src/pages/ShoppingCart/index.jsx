@@ -8,7 +8,6 @@ import RemoveButton from '@atoms/RemoveButton';
 import CardResume from "@atoms/CardResume";
 import OrderButtons from '@molecules/OrderButtons';
 import OrderCard from "@molecules/OrderCard";
-import Layout from "@template/Layout";
 import ShoppingCartLayout from '@template/ShoppingCartLayout';
 import './ShoppingCart.scss'
 
@@ -38,40 +37,38 @@ function ShoppingCart() {
     }
 
     return(
-        <Layout>
-            <ShoppingCartLayout
-                buttons={
-                    <Button 
-                        label="Create order"
-                        handleClick={handleSubmit}
-                        disabled={totalOrderProducts === 0}
-                    />
-                }
+        <ShoppingCartLayout
+            buttons={
+                <Button 
+                    label="Create order"
+                    handleClick={handleSubmit}
+                    disabled={totalOrderProducts === 0}
+                />
+            }
+        >
+            <OrderCard
+                totalProducts={totalOrderProducts}
+                totalOrderPrice={totalOrderPrice}
             >
-                <OrderCard
-                    totalProducts={totalOrderProducts}
-                    totalOrderPrice={totalOrderPrice}
-                >
-                    {
-                        cart.map(it => (
-                            <CardResume
-                                key={it.name}
-                                name={it.name}
-                                quantity={it.quantity}
-                                unitPrice={it.unitPrice}
-                                totalPrice={it.totalPrice}
-                            >
-                                <OrderButtons>
-                                    <RemoveButton 
-                                        handleClick={() => onRemoveElement(it.name)}
-                                    />
-                                </OrderButtons>
-                            </CardResume>
-                        ))
-                    }
-                </OrderCard>
-            </ShoppingCartLayout>
-        </Layout>
+                {
+                    cart.map(it => (
+                        <CardResume
+                            key={it.name}
+                            name={it.name}
+                            quantity={it.quantity}
+                            unitPrice={it.unitPrice}
+                            totalPrice={it.totalPrice}
+                        >
+                            <OrderButtons>
+                                <RemoveButton 
+                                    handleClick={() => onRemoveElement(it.name)}
+                                />
+                            </OrderButtons>
+                        </CardResume>
+                    ))
+                }
+            </OrderCard>
+        </ShoppingCartLayout>
     )
 }
 
