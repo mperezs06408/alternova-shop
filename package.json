@@ -23,6 +23,7 @@
     "sass": "^1.57.1",
     "uuid": "^9.0.0",
     "vite-plugin-fs": "^1.0.0-beta.4",
+    "vite-plugin-sass": "^0.1.0",
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
